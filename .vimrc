@@ -2,6 +2,7 @@ syntax on
 colorscheme peachpuff
 
 set nocompatible
+set nowrap
 set history=500
 set ruler
 set laststatus=2

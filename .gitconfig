@@ -1,19 +1,32 @@
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    type = cat-file -t
+    dump = cat-file -p
+    hist = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    tree = log --all --graph --decorate --oneline
 [core]
-	autocrlf = input
-	safecrlf = warn
-	filemode = true
-	bare = false
+    whitespace = trailing-space,space-before-tab
+    fileMode = false
+    autocrlf = input
+    safecrlf = warn
+    bare = false
 [color]
-	ui = auto
+    ui = auto
+[advice]
+    statusHints = false
+[diff]
+    renames = copies
+[branch]
+    autosetupmerge = true
+    ui = auto
 [push]
-	default = tracking
+    default = tracking
+[help]
+    autocorrect = 1
+    default = tracking
 [auto]
-	clrf = input
+    clrf = input
+

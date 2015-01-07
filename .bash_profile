@@ -1,10 +1,3 @@
-
-#CSS replacers
-alias phdcss='while x=0; do lessc -x /Web/Sites/phd/public/less/styles.less > /Web/Sites/phd/public/css/style.css; sleep 2; done'
-alias pushdw='sh /Web/Scripts/push_dw.sh'
-alias pulldw='sh /Web/Scripts/pull_directwireless.sh'
-alias pushphd='sh /Web/Scripts/rsync_publichd.sh'
-
 #Git shorcuts
 alias gs='git status '
 alias ga='git add '
@@ -20,15 +13,6 @@ alias get='git '
 
 alias shutudown='sudo shutdown -h now'
 alias reboot='sudo reboot'
-
-#Dir shortcuts
-alias esports='cd /Web/Sites/esports'
-alias ownet='cd /Web/Sites/ownet'
-
-#Autostart Tmux
-if [[ ! $TERM =~ screen ]]; then 
-   exec tmux 
-fi
 
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
@@ -79,7 +63,4 @@ function parse_git_dirty {
 
 #Startup Welcomes
 export PS1="\[\e[1;31m\][\[\e[m\]\[\e[0;1m\]${debian_chroot:+($debian_chroot)} \u\[\e[m\] \[\e[1;36m\]\w\[\e[m\] \[\e[1;31m\]]\[\e[m\]\[\e[1;33m\][\[\e[m\]\[\e[1;33m\]\h\[\e[m\]\[\e[1;33m\]]\[\e[m\]\[\e[1;35m\] \[\e[m\]\[\e[1;35m\]\`parse_git_branch\`\[\e[m\]\[\e[1;35m\]\[\e[m\] "
-
-#Composer
-alias composer="php /Web/composer.phar "
 

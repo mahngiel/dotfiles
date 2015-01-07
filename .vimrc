@@ -1,5 +1,9 @@
+execute pathogen#infect()
+
 syntax on
-colorscheme peachpuff
+
+set background=dark
+colorscheme solarized
 
 set nocompatible
 set nowrap

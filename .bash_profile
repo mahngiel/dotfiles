@@ -59,16 +59,17 @@ function __promptCommand() {
   PS1="$PS1\[\e[0;1m\]${debian_chroot:+($debian_chroot)} \u\[\e[m\] " # username
   PS1="$PS1\[\e[1;36m\]\w\[\e[m\] " # working dir
   [[ $EXIT > 0 ]] && PS1="$PS1\[\e[1;31m\]]\[\e[m\]" || PS1="$PS1\[\e[1;32m\]]\[\e[m\]" # Left |
-  
+
   PS1="$PS1\[\e[1;33m\][\[\e[m\]\[\e[1;33m\]\h\[\e[m\]\[\e[1;33m\]]\[\e[m\]" # [hostname]
   PS1="$PS1\n" #new line
 
-  [[ $EXIT > 0 ]] && PS1="$PS1\[\e[1;31m\]│\[\e[m\] " || PS1="$PS1\[\e[1;32m\]│\[\e[m\] " # color coded pipe |
-  PS1="$PS1\[\e[1;35m\]\`parse_git_branch\`\[\e[m\]" # git working dir
+  if [[ `parse_git_branch` != "" ]]; then
+    [[ $EXIT > 0 ]] && PS1="$PS1\[\e[1;31m\]│\[\e[m\] " || PS1="$PS1\[\e[1;32m\]│\[\e[m\] " # color coded pipe |
+    PS1="$PS1\[\e[1;35m\]\`parse_git_branch\`\[\e[m\]" # git working dir
+    PS1="$PS1\n" #new line
+  fi
 
-  PS1="$PS1\n" #new line
-
-  [[ $EXIT > 0 ]] && PS1="$PS1\[\e[1;31m\]└─*\[\e[m\] " || PS1="$PS1\[\e[1;32m\]└─⚡\[\e[m\] " # prompt line carriage
+  [[ $EXIT > 0 ]] && PS1="$PS1\[\e[1;31m\]└─⚡\[\e[m\] " || PS1="$PS1\[\e[1;32m\]└─*\[\e[m\] " # prompt line carriage
 }
 #Startup Welcomes
 export PROMPT_COMMAND=__promptCommand

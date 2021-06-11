@@ -13,6 +13,8 @@
     autocrlf = input
     safecrlf = warn
     bare = false
+	excludesfiles = /Users/kris/.gitignore
+	excludesfile = /Users/kris/.gitignore
 [color]
     ui = auto
 [advice]
@@ -30,3 +32,9 @@
 [auto]
     clrf = input
 
+[user]
+	signingkey = 
+	name = 
+	email = 
+[pull]
+	ff = only

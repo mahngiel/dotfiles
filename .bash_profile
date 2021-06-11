@@ -1,5 +1,6 @@
-export PATH="$PATH:/opt/arcanist/bin"
-source /opt/arcanist/resources/shell/bash-completion
+if [[ ! $TERM =~ screen ]]; then 
+   exec tmux 
+fi
 
 # Git autocomplete
 . ~/.git-completion.bash
@@ -78,9 +79,10 @@ export PROMPT_COMMAND=__promptCommand
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
-alias gc='git commit'
+alias gc='git commit -S'
 alias gd='git diff'
 alias go='git checkout '
+alias gco='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gam='git commit -am '
@@ -90,11 +92,16 @@ alias get='git '
 alias shutudown='sudo shutdown -h now'
 alias reboot='sudo reboot'
 
-#Dir shortcuts
-alias phd=' cd /Web/Sites/PublicHD'
+alias repos="cd /Volumes/R/Repos"
+alias ghash=$(echo git rev-parse HEAD)
 
-# Application shortcuts
-alias artisan='php artisan'
-alias migrate='php artisan migrate --env=local'
-alias mapp='migrate application'
-alias py=python
+export GPG_TTY=$(tty)
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+function ecr() {
+    aws ecr get-login --no-include-email --region us-east-1
+}
+
+function ssh-ssm(){
+   aws ssm start-session --target $1
+}
